@@ -14,6 +14,8 @@ abstract class SharedTheme {
 
   String get name;
 
+  String get backgroundAssets;
+
   Color get puzzleThemeBackground;
 
   RoundedRectangleBorder puzzleBorder(bool small);
@@ -81,17 +83,32 @@ abstract class SharedTheme {
   List<Widget> bottomControls(PuzzleControls controls) => <Widget>[
         Tooltip(
           message: 'Reset',
-          child: IconButton(
+          child: TextButton.icon(
+            label: const Text(
+              'Reset',
+              style: TextStyle(color: Colors.black87),
+            ),
             onPressed: controls.reset,
-            icon: Icon(Icons.refresh, color: puzzleAccentColor),
+            icon: Icon(Icons.refresh, color: Colors.black87),
           ),
         ),
         Tooltip(
-          message: 'Auto play',
-          child: Checkbox(
-            value: controls.autoPlay,
-            onChanged: controls.setAutoPlayFunction,
-            activeColor: puzzleAccentColor,
+          message: 'Auto Play',
+          child: Row(
+            children: [
+              SizedBox(
+                width: 5,
+              ),
+              Checkbox(
+                value: controls.autoPlay,
+                onChanged: controls.setAutoPlayFunction,
+                activeColor: puzzleAccentColor,
+              ),
+              Text(
+                'Auto',
+                style: TextStyle(color: Colors.black87),
+              ),
+            ],
           ),
         ),
         Expanded(
@@ -104,7 +121,7 @@ abstract class SharedTheme {
                 text: controls.clickCount.toString(),
                 style: _infoStyle,
               ),
-              const TextSpan(text: ' Moves'),
+              TextSpan(text: ' Moves', style: _infoStyle),
             ],
           ),
         ),
@@ -118,7 +135,7 @@ abstract class SharedTheme {
                   text: controls.incorrectTiles.toString(),
                   style: _infoStyle,
                 ),
-                const TextSpan(text: ' Tiles left'),
+                TextSpan(text: ' Tiles left', style: _infoStyle),
               ],
             ),
           ),

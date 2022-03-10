@@ -3,6 +3,7 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:provider/provider.dart';
 
@@ -97,14 +98,14 @@ class PuzzleHomeState extends State
         child: Material(
           child: Stack(
             children: const <Widget>[
-              SizedBox.expand(
-                child: FittedBox(
-                  fit: BoxFit.cover,
-                  child: Image(
-                    image: AssetImage('asset/seattle.jpg'),
-                  ),
-                ),
-              ),
+              // SizedBox.expand(
+              //   child: FittedBox(
+              //     fit: BoxFit.cover,
+              //     child: Image(
+              //       image: AssetImage('asset/snap.jpeg'),
+              //     ),
+              //   ),
+              // ),
               LayoutBuilder(builder: _doBuild),
             ],
           ),
@@ -187,10 +188,10 @@ Widget _updateConstraints(
   const _smallWidth = 580;
 
   final constraintWidth =
-      constraints.hasBoundedWidth ? constraints.maxWidth : 1000.0;
+      constraints.hasBoundedWidth ? constraints.maxWidth / 1.5 : 1000.0;
 
   final constraintHeight =
-      constraints.hasBoundedHeight ? constraints.maxHeight : 1000.0;
+      constraints.hasBoundedHeight ? constraints.maxHeight / 1.5 : 1000.0;
 
   return builder(constraintWidth < _smallWidth || constraintHeight < 690);
 }
@@ -204,79 +205,131 @@ Widget _doBuildCore(bool small) => ValueTabController<SharedTheme>(
         builder: (_, theme, __) => AnimatedContainer(
           duration: puzzleAnimationDuration,
           color: theme.puzzleThemeBackground,
-          child: Center(
-            child: theme.styledWrapper(
-              small,
-              SizedBox(
-                width: 580,
-                child: Consumer<AppState>(
-                  builder: (context, appState, _) => Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        decoration: const BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(
-                              color: Colors.black26,
-                              width: 1,
-                            ),
+          child: Container(
+            width: double.maxFinite,
+            height: double.maxFinite,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(theme.backgroundAssets),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+              child: Container(
+                decoration:
+                    new BoxDecoration(color: Colors.white.withOpacity(0.0)),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 300.0,
+                      height: 56.0,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(24.0),
+                        color: const Color(0x992a2a2a),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          'PuzzleMania',
+                          style: TextStyle(
+                            fontSize: 24,
+                            letterSpacing: 1.5,
+                            color: Colors.white,
+                            height: 1,
                           ),
+                          textAlign: TextAlign.center,
                         ),
-                        margin: const EdgeInsets.symmetric(horizontal: 20),
-                        child: TabBar(
-                          controller: ValueTabController.of(context),
-                          labelPadding: const EdgeInsets.fromLTRB(0, 20, 0, 12),
-                          labelColor: theme.puzzleAccentColor,
-                          indicatorColor: theme.puzzleAccentColor,
-                          indicatorWeight: 1.5,
-                          unselectedLabelColor: Colors.black.withOpacity(0.6),
-                          tabs: themes
-                              .map((st) => Text(
-                                    st.name.toUpperCase(),
-                                    style: const TextStyle(
-                                      letterSpacing: 0.5,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Center(
+                      child: theme.styledWrapper(
+                        small,
+                        SizedBox(
+                          width: 450,
+                          child: Consumer<AppState>(
+                            builder: (context, appState, _) => Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                Container(
+                                  decoration: const BoxDecoration(
+                                    border: Border(
+                                      bottom: BorderSide(
+                                        color: Colors.black26,
+                                        width: 1,
+                                      ),
                                     ),
-                                  ))
-                              .toList(),
-                        ),
-                      ),
-                      Flexible(
-                        child: Container(
-                          padding: const EdgeInsets.all(10),
-                          child: Flow(
-                            delegate: PuzzleFlowDelegate(
-                              small ? const Size(90, 90) : const Size(140, 140),
-                              appState.puzzle,
-                              appState.animationNotifier,
-                            ),
-                            children: List<Widget>.generate(
-                              appState.puzzle.length,
-                              (i) => theme.tileButtonCore(
-                                  i, appState.puzzle, small),
+                                  ),
+                                  margin: const EdgeInsets.symmetric(
+                                      horizontal: 20),
+                                  child: TabBar(
+                                    controller: ValueTabController.of(context),
+                                    labelPadding:
+                                        const EdgeInsets.fromLTRB(0, 20, 0, 12),
+                                    labelColor: theme.puzzleAccentColor,
+                                    indicatorColor: theme.puzzleAccentColor,
+                                    indicatorWeight: 1.5,
+                                    unselectedLabelColor:
+                                        Colors.black.withOpacity(0.6),
+                                    tabs: themes
+                                        .map((st) => Text(
+                                              st.name.toUpperCase(),
+                                              style: const TextStyle(
+                                                  letterSpacing: 1.5,
+                                                  fontWeight: FontWeight.bold),
+                                            ))
+                                        .toList(),
+                                  ),
+                                ),
+                                Flexible(
+                                  child: Container(
+                                    padding: const EdgeInsets.all(10),
+                                    child: Flow(
+                                      delegate: PuzzleFlowDelegate(
+                                        small
+                                            ? const Size(77, 77)
+                                            : const Size(140, 140),
+                                        appState.puzzle,
+                                        appState.animationNotifier,
+                                      ),
+                                      children: List<Widget>.generate(
+                                        appState.puzzle.length,
+                                        (i) => theme.tileButtonCore(
+                                            i, appState.puzzle, small),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  decoration: const BoxDecoration(
+                                    border: Border(
+                                      top: BorderSide(
+                                          color: Colors.black26, width: 1),
+                                    ),
+                                  ),
+                                  padding: const EdgeInsets.only(
+                                    left: 10,
+                                    bottom: 6,
+                                    top: 2,
+                                    right: 10,
+                                  ),
+                                  child: Consumer<PuzzleControls>(
+                                    builder: (_, controls, __) => Row(
+                                        children:
+                                            theme.bottomControls(controls)),
+                                  ),
+                                )
+                              ],
                             ),
                           ),
                         ),
                       ),
-                      Container(
-                        decoration: const BoxDecoration(
-                          border: Border(
-                            top: BorderSide(color: Colors.black26, width: 1),
-                          ),
-                        ),
-                        padding: const EdgeInsets.only(
-                          left: 10,
-                          bottom: 6,
-                          top: 2,
-                          right: 10,
-                        ),
-                        child: Consumer<PuzzleControls>(
-                          builder: (_, controls, __) =>
-                              Row(children: theme.bottomControls(controls)),
-                        ),
-                      )
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),

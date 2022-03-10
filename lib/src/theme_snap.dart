@@ -7,14 +7,17 @@ import 'flutter.dart';
 import 'shared_theme.dart';
 import 'widgets/decoration_image_plus.dart';
 
-class ThemeSeattle extends SharedTheme {
+class ThemeSnap extends SharedTheme {
   @override
-  String get name => 'Seattle';
-
-  const ThemeSeattle();
+  String get name => 'Snap';
 
   @override
-  Color get puzzleThemeBackground => const Color.fromARGB(153, 90, 135, 170);
+  String get backgroundAssets => "asset/snap.jpeg";
+
+  const ThemeSnap();
+
+  @override
+  Color get puzzleThemeBackground => const Color.fromARGB(210, 90, 135, 170);
 
   @override
   Color get puzzleBackgroundColor => Colors.white70;
@@ -45,7 +48,7 @@ class ThemeSeattle extends SharedTheme {
         puzzleHeight: puzzle.height,
         pieceIndex: i,
         fit: BoxFit.cover,
-        image: const AssetImage('asset/seattle.jpg'));
+        image: const AssetImage('asset/snap.jpeg'));
 
     final correctPosition = puzzle.isCorrectPosition(i);
     final content = createInk(
@@ -62,12 +65,12 @@ class ThemeSeattle extends SharedTheme {
                 style: TextStyle(
                   fontWeight: FontWeight.normal,
                   color: correctPosition ? Colors.white : Colors.black,
-                  fontSize: small ? 25 : 42,
+                  fontSize: small ? 20 : 42,
                 ),
               ),
             ),
       image: decorationImage,
-      padding: EdgeInsets.all(small ? 20 : 32),
+      padding: EdgeInsets.all(small ? 10 : 15),
     );
 
     return createButton(puzzle, small, i, content);

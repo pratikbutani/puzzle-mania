@@ -12,10 +12,13 @@ class ThemeSimple extends SharedTheme {
   @override
   String get name => 'Simple';
 
+  @override
+  String get backgroundAssets => "asset/theme_simple.jpg";
+
   const ThemeSimple();
 
   @override
-  Color get puzzleThemeBackground => Colors.white;
+  Color get puzzleThemeBackground => const Color.fromARGB(210, 90, 135, 170);
 
   @override
   Color get puzzleBackgroundColor => Colors.white70;
@@ -26,7 +29,7 @@ class ThemeSimple extends SharedTheme {
   @override
   RoundedRectangleBorder puzzleBorder(bool small) =>
       const RoundedRectangleBorder(
-        side: BorderSide(color: Colors.black26, width: 1),
+        side: BorderSide(color: Colors.black26, width: 5),
         borderRadius: BorderRadius.all(
           Radius.circular(4),
         ),
@@ -53,7 +56,7 @@ class ThemeSimple extends SharedTheme {
           (i + 1).toString(),
           style: TextStyle(
             color: Colors.white,
-            fontWeight: correctPosition ? FontWeight.bold : FontWeight.normal,
+            fontWeight: correctPosition ? FontWeight.w900 : FontWeight.normal,
             fontSize: small ? 30 : 49,
           ),
         ),
@@ -65,7 +68,7 @@ class ThemeSimple extends SharedTheme {
       small,
       i,
       content,
-      color: const Color.fromARGB(255, 13, 87, 155),
+      color: const Color.fromARGB(255, 244, 87, 155),
     );
   }
 }

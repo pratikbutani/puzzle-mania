@@ -7,14 +7,15 @@ import 'flutter.dart';
 import 'shared_theme.dart';
 
 const _yellowIsh = Color.fromARGB(255, 248, 244, 233);
-const _chocolate = Color.fromARGB(255, 66, 66, 68);
+const _yellowIshDark = Color.fromARGB(255, 208, 204, 233);
+const _chocolate = Color.fromARGB(210, 90, 135, 170);
 const _orangeIsh = Color.fromARGB(255, 224, 107, 83);
 
-class ThemePlaster extends SharedTheme {
+class ThemeSpan extends SharedTheme {
   @override
-  String get name => 'Plaster';
+  String get name => 'Span';
 
-  const ThemePlaster();
+  const ThemeSpan();
 
   @override
   Color get puzzleThemeBackground => _chocolate;
@@ -28,8 +29,8 @@ class ThemePlaster extends SharedTheme {
   @override
   RoundedRectangleBorder puzzleBorder(bool small) => RoundedRectangleBorder(
         side: const BorderSide(
-          color: Color.fromARGB(255, 103, 103, 105),
-          width: 8,
+          color: _orangeIsh,
+          width: 5,
         ),
         borderRadius: BorderRadius.all(
           Radius.circular(small ? 10 : 18),
@@ -59,7 +60,7 @@ class ThemePlaster extends SharedTheme {
       style: TextStyle(
         color: primary ? _yellowIsh : _chocolate,
         fontFamily: 'Plaster',
-        fontSize: small ? 40 : 77,
+        fontSize: small ? 35 : 77,
       ),
     );
 
@@ -75,4 +76,7 @@ class ThemePlaster extends SharedTheme {
       ),
     );
   }
+
+  @override
+  String get backgroundAssets => "asset/theme_span.jpeg";
 }

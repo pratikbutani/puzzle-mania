@@ -3,11 +3,11 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'theme_plaster.dart';
-import 'theme_seattle.dart';
 import 'theme_simple.dart';
+import 'theme_snap.dart';
 
 const themes = [
   ThemeSimple(),
-  ThemeSeattle(),
-  ThemePlaster(),
+  ThemeSnap(),
+  ThemeSpan(),
 ];

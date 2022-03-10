@@ -15,7 +15,8 @@ class PuzzleApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => MaterialApp(
-        title: 'Slide Puzzle',
+        title: 'Puzzle Mania',
+        themeMode: ThemeMode.light,
         home: _PuzzleHome(rows, columns),
       );
 }
