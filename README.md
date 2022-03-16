@@ -1,3 +1,7 @@
-A slide (15) puzzle implemented in Dart and Flutter.
+## PuzzleMania
 
-<img float=center src="docs/screen_shot.png" height=600 width=350>
+A slide puzzle game which is created for all 6 platforms supported by Flutter :)
+
+![Check on YouTube](https://yt-embed.herokuapp.com/embed?v=5jkQZ4rwZ8g)
+
+Check my project on [DevPost](https://devpost.com/software/puzzlemania-zg9tnl) 
