@@ -95,9 +95,9 @@ class PuzzleHomeState extends State
             value: _autoPlayListenable,
           )
         ],
-        child: Material(
+        child: const Material(
           child: Stack(
-            children: const <Widget>[
+            children: <Widget>[
               // SizedBox.expand(
               //   child: FittedBox(
               //     fit: BoxFit.cover,
@@ -218,7 +218,7 @@ Widget _doBuildCore(bool small) => ValueTabController<SharedTheme>(
               filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
               child: Container(
                 decoration:
-                    new BoxDecoration(color: Colors.white.withOpacity(0.0)),
+                    BoxDecoration(color: Colors.white.withOpacity(0.0)),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

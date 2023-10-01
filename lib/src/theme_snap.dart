@@ -12,7 +12,7 @@ class ThemeSnap extends SharedTheme {
   String get name => 'Snap';
 
   @override
-  String get backgroundAssets => "asset/snap.jpeg";
+  String get backgroundAssets => 'asset/snap.jpeg';
 
   const ThemeSnap();
 

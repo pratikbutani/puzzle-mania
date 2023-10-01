@@ -78,5 +78,5 @@ class ThemeSpan extends SharedTheme {
   }
 
   @override
-  String get backgroundAssets => "asset/theme_span.jpeg";
+  String get backgroundAssets => 'asset/theme_span.jpeg';
 }
