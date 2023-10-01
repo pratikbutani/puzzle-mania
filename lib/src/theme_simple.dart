@@ -13,7 +13,7 @@ class ThemeSimple extends SharedTheme {
   String get name => 'Simple';
 
   @override
-  String get backgroundAssets => "asset/theme_simple.jpg";
+  String get backgroundAssets => 'asset/theme_simple.jpg';
 
   const ThemeSimple();
 
