@@ -58,7 +58,6 @@ abstract class SharedTheme {
             animationDuration: puzzleAnimationDuration,
             shape: shape ?? puzzleBorder(small),
             padding: const EdgeInsets.symmetric(),
-            primary: color,
           ),
           clipBehavior: Clip.hardEdge,
           onPressed: () => puzzle.clickOrShake(tileValue),
@@ -89,14 +88,14 @@ abstract class SharedTheme {
               style: TextStyle(color: Colors.black87),
             ),
             onPressed: controls.reset,
-            icon: Icon(Icons.refresh, color: Colors.black87),
+            icon: const Icon(Icons.refresh, color: Colors.black87),
           ),
         ),
         Tooltip(
           message: 'Auto Play',
           child: Row(
             children: [
-              SizedBox(
+              const SizedBox(
                 width: 5,
               ),
               Checkbox(
@@ -104,7 +103,7 @@ abstract class SharedTheme {
                 onChanged: controls.setAutoPlayFunction,
                 activeColor: puzzleAccentColor,
               ),
-              Text(
+              const Text(
                 'Auto',
                 style: TextStyle(color: Colors.black87),
               ),
