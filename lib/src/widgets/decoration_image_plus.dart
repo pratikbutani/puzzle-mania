@@ -134,6 +134,7 @@ class DecorationImagePlus implements DecorationImage {
   }
 
   @override
+  // ignore: deprecated_member_use
   int get hashCode => hashValues(image, colorFilter, fit, alignment,
       centerSlice, repeat, matchTextDirection);
 

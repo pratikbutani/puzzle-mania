@@ -7,7 +7,7 @@ import 'flutter.dart';
 import 'shared_theme.dart';
 
 const _yellowIsh = Color.fromARGB(255, 248, 244, 233);
-const _yellowIshDark = Color.fromARGB(255, 208, 204, 233);
+// const _yellowIshDark = Color.fromARGB(255, 208, 204, 233);
 const _chocolate = Color.fromARGB(210, 90, 135, 170);
 const _orangeIsh = Color.fromARGB(255, 224, 107, 83);
 
@@ -78,5 +78,5 @@ class ThemeSpan extends SharedTheme {
   }
 
   @override
-  String get backgroundAssets => "asset/theme_span.jpeg";
+  String get backgroundAssets => 'asset/theme_span.jpeg';
 }
