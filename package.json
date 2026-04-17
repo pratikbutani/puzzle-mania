@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "firebase": "^9.6.8"
+    "firebase": "^10.9.0"
   }
 }
